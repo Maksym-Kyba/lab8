@@ -4,7 +4,7 @@ class Node:
         self.next = next
 
 def linked_list_from_string(list_repr: str) -> Node | None:
-    values = list_repr.split(' -> ')
+    values = list_repr.split(' -> ')[:-1]
     for ind, val in enumerate(values):
         try:
             integer = int(val)
