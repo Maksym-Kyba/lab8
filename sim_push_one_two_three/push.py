@@ -1,10 +1,12 @@
 class Node:
-    def __init__(self, data, next=None):
+    def __init__(self, data):
         self.data = data
-        self.next = next
+        self.next = None
 
 def push(head, data):
-    return Node(data, head)
+    chained = Node(data)
+    chained.next = head
+    return chained
 
 def build_one_two_three():
     head = None
