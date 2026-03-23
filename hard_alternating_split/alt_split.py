@@ -11,6 +11,8 @@ class Context(object):
 def alternating_split(head):
     current = head
     change_list = 0
+    if current is None or current.next is None:
+        raise IndexError
     first_list_start = Node(None)
     first_list = first_list_start
     second_list_start = Node(None)
