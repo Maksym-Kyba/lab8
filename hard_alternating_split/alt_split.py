@@ -11,9 +11,10 @@ class Context(object):
 def alternating_split(head):
     current = head
     change_list = 0
-    first_list = Node(None)
-    second_list = Node(None)
-    current = current.next.next
+    first_list_start = Node(None)
+    first_list = first_list_start
+    second_list_start = Node(None)
+    second_list = second_list_start
     while current is not None and current.next is not None:
         change_list += 1
         if change_list % 2 == 1:
@@ -26,4 +27,9 @@ def alternating_split(head):
             second_list = new_node
         current = current.next
 
-    return Context(first_list, second_list)
+    last_node_1 = Node(None)
+    last_node_2 = Node(None)
+    first_list.next = last_node_1
+    second_list.next = last_node_2
+
+    return Context(first_list_start.next, second_list_start.next)
