@@ -4,6 +4,9 @@ class Node(object):
         self.next = None
 
 def reverse(head):
+    if head is None:
+        return None
+
     def node_list(node):
         if node.next is None:
             return [node]
