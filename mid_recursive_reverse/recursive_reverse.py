@@ -4,33 +4,17 @@ class Node(object):
         self.next = None
 
 def reverse(head):
-    if head.next is None:
-        
-    head = head.next
+    def node_list(node):
+        if node.next is None:
+            return [node]
+        return [node] + node_list(node.next)
 
-def push(head, data):
-    chained = Node(data)
-    chained.next = head
-    return chained
+    my_nodes = node_list(head)[::-1]
+    start = my_nodes[0]
+    for ind, node in enumerate(my_nodes):
+        try:
+            node.next = my_nodes[ind + 1]
+        except IndexError:
+            node.next = None
 
-def build_one_two_three():
-    head = None
-    num = 3
-    while num != 0:
-        head = push(head, num)
-        num -= 1
-
-    return head
-
-def stringify(node):
-    if not isinstance(node, Node):
-        return 'None'
-    result = ''
-    while node.next is not None:
-        result += f'{node.data} -> '
-        node = node.next
-
-    result += f'{node.data} -> None'
-    return result
-
-print(stringify(reverse(build_one_two_three())))
+    return start
